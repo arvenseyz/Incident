@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: incident-management-app
+  labels:
+    app: incident-management-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: incident-management-app
+  template:
+    metadata:
+      labels:
+        app: incident-management-app
+    spec:
+      containers:
+        - name: incident-management-app
+          image: incident-management-app:latest
+          ports:
+            - containerPort: 8080
