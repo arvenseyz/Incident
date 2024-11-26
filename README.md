@@ -37,7 +37,8 @@ Docker、K8s
 使用react实现了一个简单的前端页面
 五、测试
 单元测试：
-在后端项目中，使用 JUnit 5 和 Mockito 编写了单元测试代码。例如，IncidentControllerTest类用于测试IncidentController的各个方法，通过模拟IncidentService的行为，验证控制器层方法的正确性，包括输入参数验证、返回结果验证以及对服务层方法调用次数的验证等。同样，IncidentServiceImplTest类用于测试服务层IncidentServiceImpl的方法。
+在后端项目中，使用 JUnit 5 和 Mockito 编写了单元测试代码。
+例如，IncidentControllerTest类用于测试IncidentController的各个方法，通过模拟IncidentService的行为，验证控制器层方法的正确性，包括输入参数验证、返回结果验证以及对服务层方法调用次数的验证等。同样，IncidentServiceImplTest类用于测试服务层IncidentServiceImpl的方法。
 压力测试：
 使用多线程进行压力测试
 六、部署
@@ -45,3 +46,5 @@ Docker、K8s
 项目根目录下的Dockerfile文件定义了如何将后端应用构建成 Docker 镜像。通过运行docker build -t incident-management-app.命令（其中-t指定镜像标签，最后的.表示当前目录为构建上下文），可以构建出名为incident-management-app的 Docker 镜像。然后通过docker run -p 8080:8080 incident-management-app命令，将容器内的 8080 端口映射到主机的 8080 端口，使得可以通过http://localhost:8080/incidents访问应用程序的 API。
 Kubernetes 部署：
 使用incident-management-deployment.yaml和incident-management-service.yaml这两个配置文件进行 Kubernetes 部署。首先确保已安装kubectl并且连接到 Kubernetes 集群，然后通过kubectl apply -f incident-management-deployment.yaml和kubectl apply -f incident-management-service.yaml命令分别应用部署和服务配置，将应用部署到 Kubernetes 环境中。
+七、演示视频
+https://www.xinpianchang.com/a13227548
