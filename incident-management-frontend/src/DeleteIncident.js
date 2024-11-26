@@ -13,6 +13,7 @@ const DeleteIncident = () => {
             console.error('Error deleting incident:', error);
         } finally {
             setLoading(false);
+            window.location.reload();
         }
     };
 

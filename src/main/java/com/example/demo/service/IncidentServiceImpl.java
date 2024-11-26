@@ -27,7 +27,6 @@ public class IncidentServiceImpl implements IncidentService {
         if (!incident.isValid()) {
             throw new IllegalArgumentException("message cannot be empty");
         }
-
         try {
             return incidentDao.save(incident);
         } catch (Exception e) {

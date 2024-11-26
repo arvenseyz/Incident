@@ -15,6 +15,7 @@ const CreateIncident = () => {
             console.error('Error creating incident:', error);
         } finally {
             setLoading(false);
+            window.location.reload();
         }
     };
 

@@ -17,6 +17,7 @@ const ModifyIncident = () => {
             console.error('Error modifying incident:', error);
         } finally {
             setLoading(false);
+            window.location.reload();
         }
     };
 

@@ -75,12 +75,10 @@ public class IncidentStressTest {
             }));
         }
 
-        // 等待所有线程完成任务
         for (Future<?> future : futures) {
             future.get();
         }
 
-        // 验证创建事件的业务逻辑是否正确执行
         verify(incidentService, times(numThreads * numRequestsPerThread)).createIncident(any(Incident.class));
 
         executorService.shutdown();
@@ -109,12 +107,10 @@ public class IncidentStressTest {
             }));
         }
 
-        // 等待所有线程完成任务
         for (Future<?> future : futures) {
             future.get();
         }
 
-        // 验证删除事件的业务逻辑是否正确执行
         verify(incidentService, times(numThreads * numRequestsPerThread)).deleteIncident(anyLong());
 
         executorService.shutdown();
@@ -138,7 +134,6 @@ public class IncidentStressTest {
                         newIncident.setId(incident.getId());
                         newIncident.setDescription("Multi-thread modified stress test incident " + j);
 
-                        // 构造JSON格式的请求体字符串
                         String json = "{\"description\":\"" + newIncident.getDescription() + "\"}";
 
                         mockMvc.perform(MockMvcRequestBuilders.put("/incidents/" + newIncident.getId())
@@ -151,12 +146,10 @@ public class IncidentStressTest {
             }));
         }
 
-        // 等待所有线程完成任务
         for (Future<?> future : futures) {
             future.get();
         }
 
-        // 验证修改事件的业务逻辑是否正确执行
         verify(incidentService, times(numThreads * numRequestsPerThread)).modifyIncident(anyLong(), any(Incident.class));
 
         executorService.shutdown();
@@ -183,12 +176,10 @@ public class IncidentStressTest {
             }));
         }
 
-        // 等待所有线程完成任务
         for (Future<?> future : futures) {
             future.get();
         }
 
-        // 验证列出所有事件的业务逻辑是否正确执行
         verify(incidentService, times(numThreads * numRequestsPerThread)).listAllIncidents();
 
         executorService.shutdown();

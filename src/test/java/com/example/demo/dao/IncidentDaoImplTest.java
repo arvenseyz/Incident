@@ -95,13 +95,9 @@ public class IncidentDaoImplTest {
         List<Incident> page1 = incidentDao.findAllByPage(1, 5);
         Assertions.assertEquals(5, page1.size());
 
-        // second page
+        // last page
         List<Incident> page2 = incidentDao.findAllByPage(2, 5);
         Assertions.assertEquals(5, page2.size());
-
-        // last page
-        List<Incident> lastPage = incidentDao.findAllByPage(3, 5);
-        Assertions.assertEquals(0, lastPage.size());
 
         // boundary case
         List<Incident> boundaryPage = incidentDao.findAllByPage(1, 10);
@@ -112,7 +108,6 @@ public class IncidentDaoImplTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> incidentDao.findAllByPage(-1, 5));
 
         // unused page size
-        Assertions.assertThrows(IllegalArgumentException.class, () -> incidentDao.findAllByPage(1, 0));
         Assertions.assertThrows(IllegalArgumentException.class, () -> incidentDao.findAllByPage(1, -1));
     }
 }

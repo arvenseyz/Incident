@@ -28,6 +28,7 @@ public class IncidentServiceImplTest {
     @Test
     public void testCreateIncident() {
         Incident incident = new Incident();
+        incident.setDescription("message");
         when(incidentDao.save(incident)).thenReturn(incident);
 
         Incident createdIncident = incidentService.createIncident(incident);
@@ -49,6 +50,7 @@ public class IncidentServiceImplTest {
     public void testModifyIncident() {
         Long id = 1L;
         Incident newIncident = new Incident();
+        newIncident.setDescription("message");
 
         Incident existingIncident = new Incident();
         existingIncident.setId(id);
@@ -64,6 +66,7 @@ public class IncidentServiceImplTest {
     public void testModifyIncidentNotFound() {
         Long id = 1L;
         Incident newIncident = new Incident();
+        newIncident.setDescription("message");
 
         when(incidentDao.findById(id)).thenReturn(null);
 
